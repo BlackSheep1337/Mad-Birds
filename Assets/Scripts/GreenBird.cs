@@ -5,10 +5,6 @@ using UnityEngine;
 public class GreenBird : MonoBehaviour
 {
 
-    private void OnMouseDrag()
-    {
-        transform.position = Input.mousePosition;
-    }
     private void OnMouseDown()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
@@ -19,5 +15,10 @@ public class GreenBird : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
     }
 
+    private void OnMouseDrag()
+    {
+        Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(newPos.x, newPos.y, 0);
+    }
 
 }
