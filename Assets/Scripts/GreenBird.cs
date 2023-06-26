@@ -13,6 +13,8 @@ public class GreenBird : MonoBehaviour
 
     private void Update()
     {
+        GetComponent<LineRenderer>().SetPosition(1, _initialPosition);
+        GetComponent<LineRenderer>().SetPosition(0, transform.position);
 
         if (_birdWasLaunched && GetComponent<Rigidbody2D>().velocity.magnitude <= 0.1)
         {
@@ -48,6 +50,7 @@ public class GreenBird : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        GetComponent<LineRenderer>().enabled = true;
         GetComponent<SpriteRenderer>().color = Color.red;
     }
 
@@ -58,6 +61,7 @@ public class GreenBird : MonoBehaviour
 
         GetComponent<Rigidbody2D>().AddForce(directionToInitialPosition * _launchPower);
         GetComponent<Rigidbody2D>().gravityScale = 1;
+        GetComponent<LineRenderer>().enabled = false;
         _birdWasLaunched = true;
     }
 
