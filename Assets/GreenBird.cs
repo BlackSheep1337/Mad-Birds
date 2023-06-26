@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GreenBird : MonoBehaviour
 {
+
+    private void OnMouseDrag()
+    {
+        transform.position = Input.mousePosition;
+    }
     private void OnMouseDown()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
@@ -13,4 +18,6 @@ public class GreenBird : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.white;
     }
+
+
 }
