@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private GameObject _cloudParticlePrefab;
     private void OnCollisionEnter2D(Collision2D other)
     {
         GreenBird bird = other.collider.GetComponent<GreenBird>();
 
         if (bird != null)
         {
+            Instantiate(_cloudParticlePrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }
@@ -21,8 +23,9 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        if (other.contacts[0].normal.y < 0.5)
+        if (other.contacts[0].normal.y < -0.5)
         {
+            Instantiate(_cloudParticlePrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
