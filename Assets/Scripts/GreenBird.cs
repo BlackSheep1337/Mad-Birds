@@ -34,9 +34,9 @@ public class GreenBird : MonoBehaviour
         if (transform.position.y > 10 ||
             transform.position.y < -10 ||
             transform.position.x > 10 ||
-            transform.position.x < -10 ||
+            transform.position.x < -20 ||
             _timeSittingAround > 3
-        )
+            )
         {
             result = true;
         }
